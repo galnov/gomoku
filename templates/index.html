@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gomoku Game</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Gomoku Online</h1>
+    <input type="text" id="room" placeholder="Enter Room Name">
+    <button onclick="joinGame()">Join Game</button>
+
+    <div id="game-board"></div>
+    <div id="status"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="/static/game.js"></script>
+</body>
+</html>
