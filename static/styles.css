@@ -1,0 +1,27 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(15, 30px);
+    grid-template-rows: repeat(15, 30px);
+    margin: 20px auto;
+    gap: 2px;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background-color: #ddd;
+}
