@@ -4,14 +4,25 @@ let room = '';
 
 function joinGame() {
     room = document.getElementById('room').value;
-    player = room ? 'X' : 'O';  // Assign player X to the first player
     socket.emit('join_game', { room: room, player: player });
 }
 
+socket.on('assign_symbol', (data) => {
+    player = data.player;  // Set the player symbol ('X' or 'O')
+    document.getElementById('status').innerText = `You are player ${player}`;
+});
+
 socket.on('game_update', (game) => {
     renderBoard(game.board);
-    document.getElementById('status').innerText = 
+    document.getElementById('status').innerText =
         game.winner ? `Player ${game.winner} wins!` : `Player ${game.current_turn}'s turn`;
+    if (game.winner) {
+        alert(`Player ${game.winner} wins!`);
+    }
+});
+
+socket.on('error', (data) => {
+    alert(data.message);
 });
 
 function makeMove(x, y) {
