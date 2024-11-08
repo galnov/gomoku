@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: gomoku-web-app
+    env: python
+    plan: free  # Or use "starter" for a paid plan with more resources
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn -k eventlet -w 1 app:app --bind 0.0.0.0:$PORT"
