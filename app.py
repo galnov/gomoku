@@ -62,11 +62,12 @@ def on_move(data):
         game['board'][x][y] = player
         game['current_turn'] = 'O' if player == 'X' else 'X'
 
+        emit('game_update', game, room=room)
         # Check for win condition
         if check_winner(game['board'], player, x, y):
             game['winner'] = player
+            emit('game_update', game, room=room)
 
-        emit('game_update', game, room=room)
     else:
         emit('error', {'message': 'Invalid move or not your turn'}, to=request.sid)
 
