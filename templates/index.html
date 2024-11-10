@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gomoku Game</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Gomoku Online</h1>
-    <input type="text" id="room" placeholder="Enter Room Name">
-    <button onclick="joinGame()">Join Game</button>
-
-    <div id="game-board"></div>
-    <div id="status"></div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
-    <script src="/static/game.js"></script>
+    <div class="container">
+        <h1>Gomoku Game</h1>
+        <div id="game-controls">
+            <input type="text" id="room" placeholder="Enter Room Name">
+            <button onclick="joinGame()">Join Game</button>
+            <p id="status">Waiting to join a game...</p>
+        </div>
+        <div id="game-board" class="board"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
 </body>
 </html>

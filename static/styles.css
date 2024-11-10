@@ -1,27 +1,108 @@
-body {
-    text-align: center;
-    font-family: Arial, sans-serif;
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-#game-board {
+/* Main container styling */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#game-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#game-controls input,
+#game-controls button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 1rem;
+}
+
+#status {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Game board styling */
+.board {
     display: grid;
-    grid-template-columns: repeat(15, 30px);
-    grid-template-rows: repeat(15, 30px);
-    margin: 20px auto;
+    grid-template-columns: repeat(15, minmax(20px, 1fr)); /* 15x15 grid with stable sizing */
+    width: 90vw;
+    max-width: 600px;
+    border: 2px solid #333;
     gap: 2px;
 }
 
+/* Each cell styling */
 .cell {
-    width: 30px;
-    height: 30px;
+    aspect-ratio: 1; /* Ensures the cell is square */
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    font-size: 1.5rem; /* Smaller font size for symbols */
+    color: #333;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0;
-    font-size: 20px;
     cursor: pointer;
+    overflow: hidden; /* Prevents any overflow */
 }
 
-.cell:hover {
-    background-color: #ddd;
+/* Hover effect for empty cells */
+.cell:empty:hover {
+    background-color: #e0e0e0;
+}
+
+/* Medium screens adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    #game-controls input,
+    #game-controls button {
+        font-size: 0.9rem;
+    }
+    #status {
+        font-size: 0.9rem;
+    }
+    .cell {
+        font-size: 2vw;
+    }
+}
+
+/* Small screens adjustments */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.25rem;
+    }
+    #game-controls input,
+    #game-controls button {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+    #status {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    .cell {
+        font-size: 3vw;
+    }
 }

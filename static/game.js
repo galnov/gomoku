@@ -31,14 +31,18 @@ function makeMove(x, y) {
 
 function renderBoard(board) {
     const boardDiv = document.getElementById('game-board');
-    boardDiv.innerHTML = '';
+    boardDiv.innerHTML = '';  // Clear previous board state
+    boardDiv.className = 'board'; // Ensures correct styling is applied
+
+    // Populate cells
     for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < board[i].length; j++) {
             const cell = document.createElement('div');
             cell.className = 'cell';
-            cell.innerText = board[i][j];
-            cell.onclick = () => makeMove(i, j);
+            cell.innerText = board[i][j] || ''; // Show 'X', 'O', or empty string
+            cell.onclick = () => makeMove(i, j);  // Click handler for making moves
             boardDiv.appendChild(cell);
         }
     }
 }
+
