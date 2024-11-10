@@ -45,11 +45,13 @@ h1 {
 /* Game board styling */
 .board {
     display: grid;
-    grid-template-columns: repeat(15, minmax(20px, 1fr)); /* 15x15 grid with stable sizing */
-    width: 90vw;
+    grid-template-columns: repeat(15, 1fr); /* 15x15 grid */
+    width: 100%;
+    max-width: 90vw;
     max-width: 600px;
     border: 2px solid #333;
     gap: 2px;
+    overflow: hidden;
 }
 
 /* Each cell styling */
@@ -57,13 +59,13 @@ h1 {
     aspect-ratio: 1; /* Ensures the cell is square */
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-    font-size: 1.5rem; /* Smaller font size for symbols */
+    font-size: 1.5rem;
     color: #333;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    overflow: hidden; /* Prevents any overflow */
+    overflow: hidden;
 }
 
 /* Hover effect for empty cells */
