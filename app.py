@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit, join_room, leave_room
+import eventlet
 
 
 # Initialize Flask app and SocketIO
